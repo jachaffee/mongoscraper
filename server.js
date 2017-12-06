@@ -16,8 +16,8 @@ app.use(express.static('public'));
 
 var databaseUri = 'mongodb://localhost/scraperdb';
 
-if (process.env.mongodb://heroku_m6zcggd8:htief2fannhd9ctdkji0eiv1qr@ds127439.mlab.com:27439/heroku_m6zcggd8) {
-	mongoose.connect(process.env.mongodb://heroku_m6zcggd8:htief2fannhd9ctdkji0eiv1qr@ds127439.mlab.com:27439/heroku_m6zcggd8);
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
 }
 
 else {
