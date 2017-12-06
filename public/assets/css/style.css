@@ -8,17 +8,31 @@
 	padding: 20px;
 }
 
-#title {
+#page-title {
 	text-align: center;
 	color: #ffffff;
 }
 
 #articles {
-
+	display: inline-block;
+    overflow: auto;
+    width: 60%;
+	padding: 10px;
 }
 
 #notes {
+	padding: 10px;
+	float: right;
+    width: 30%;
+}
 
+#title-input {
+	padding: 20px;
+	display: block;
+}
+#body-input {
+	padding: 20px;
+	display: block;
 }
 
 body {

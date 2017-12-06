@@ -1,7 +1,8 @@
 
 $.getJSON('/articles', function(data) {
+  console.log("line3");
   for (var i = 0; i<data.length; i++){
-    $('#articles').append('<p data-id="' + data[i]._id + '"><span class="headline">Headline</span>: '+ data[i].title + '<br />'+ '<a href="' + data[i].link  + '"' + 'target="' + "_blank" +' " >' +  data[i].link + '</a>' + '</p>');
+    $('#articles').append('<p data-id="' + data[i]._id + '"><span class="headline">Headline</span>: ' + data[i].title + '<br />' + '<a href="' + data[i].link  + '"' + 'target="' + "_blank" +' " >' +  data[i].link + '</a>' + '</p>');
   }
 });
 
@@ -15,8 +16,8 @@ $(document).on('click', 'p', function(){
   }).done(function( data ) {
       console.log(data);
       $('#notes').append('<h2>' + data.title + '</h2>');
-      $('#notes').append('<input id="titleinput" name="title" >');
-      $('#notes').append('<textarea id="bodyinput" name="body"></textarea>');
+      $('#notes').append('<input id="title-input" name="title" >');
+      $('#notes').append('<textarea id="body-input" name="body"></textarea>');
       $('#notes').append('<button data-id="' + data._id + '" id="savenote">Save Note</button>');
 
       if(data.note){
@@ -36,8 +37,8 @@ $(document).on('click', '#deletenote', function(){
     method: "POST",
     url: "/deletenote/" + thisId
   }).done(function() {
-        $('#titleinput').val("");
-        $('#bodyinput').val("");
+        $('#title-input').val("");
+        $('#body-input').val("");
     });
 });
 
@@ -49,12 +50,12 @@ $(document).on('click', '#savenote', function(){
     method: "POST",
     url: "/articles/" + thisId,
     data: {
-      title: $('#titleinput').val(),
-      body: $('#bodyinput').val()
+      title: $('#title-input').val(),
+      body: $('#body-input').val()
     }
   }).done(function( data ) {
       console.log(data);
-        $('#titleinput').val("");
-        $('#bodyinput').val("");
+        $('#title-input').val("");
+        $('#body-input').val("");
     });
 });
