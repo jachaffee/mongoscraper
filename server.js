@@ -24,6 +24,16 @@ else {
 	mongoose.connect(databaseUri);
 }
 
+var db = mongoose.connection;
+
+db.on('error', function(err) {
+	console.log('Mongoose Error: ', err);
+});
+
+db.once('open', function() {
+	console.log('Mongoose connection succesful.');
+});
+
 app.use('/', routes);
 
 app.listen(process.env.PORT || 3000,function(){
