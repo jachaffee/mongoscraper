@@ -3,6 +3,7 @@ var routes = require('./controllers/controller.js');
 var app = express();
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
+var mongoose = require('mongoose');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -15,11 +16,12 @@ app.use(express.static('public'));
 
 var databaseUri = 'mongodb://localhost/scraperdb';
 
-if (process.env.MONGODB_URI);
+if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI);
 }
+
 else {
-	mongoose.connect(databaseUri)
+	mongoose.connect(databaseUri);
 }
 
 app.use('/', routes);
